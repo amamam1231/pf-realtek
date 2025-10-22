@@ -1,0 +1,245 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Отключаем скролл */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Токсичный шрифт */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* flex-direction: column; */ /* Убираем это */
+
+    /* Комбинированные свойства фона: изображение поверх градиента */
+    background-image: url('realtek.png'), linear-gradient(45deg, #ff00ff, #00ffff, #ffff00);
+    background-size: cover, 400% 400%;
+    background-position: center center, 0% 50%; /* Центрируем изображение, градиент начинается слева */
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    animation: gradientAnimation 15s ease infinite;
+    /* Удаляем временный красный фон */
+    /* background-color: red; */
+
+    color: #00ff00; /* Ядовитый зеленый текст */
+    text-shadow: 2px 2px #ff0000; /* Красная обводка текста */
+    position: relative; /* Для абсолютного позиционирования гифок */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    text-align: center;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* flex-wrap: wrap; */ /* Уже не нужно, гифки вынесены */
+    /* justify-content: center; */ /* Уже не нужно */
+    z-index: 10; /* Чтобы был поверх гифок */
+    position: relative; /* Для z-index */
+}
+
+input[type="text"] {
+    background-color: #330033; /* Темно-фиолетовый */
+    border: 3px solid #ff00ff; /* Фуксия */
+    padding: 15px;
+    color: #00ffff; /* Голубой */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 15px #ffff00, 0 0 25px #ff00ff; /* Свечение */
+}
+
+/* Стили для плавающих гифок */
+.gif-floating {
+    position: absolute;
+    z-index: 101; /* Делаем губку Боба поверх тикера */
+    animation: dvdBounce 20s infinite alternate linear, pulse 1.5s infinite alternate;
+}
+
+@keyframes dvdBounce {
+    0% { top: 0%; left: 0%; }
+    25% { top: 0%; left: calc(100% - 200px); }
+    50% { top: calc(100% - 200px); left: calc(100% - 200px); }
+    75% { top: calc(100% - 200px); left: 0%; }
+    100% { top: 0%; left: 0%; }
+}
+
+.gif-scam {
+    width: 200px; /* Устанавливаем размер для единственной гифки */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+button {
+    background-color: #ff0000; /* Красный */
+    border: 3px solid #ffff00; /* Желтый */
+    color: #000000; /* Черный */
+    padding: 15px 30px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00ff00, 0 0 25px #ff0000; /* Свечение */
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.token-ticker {
+    position: absolute; /* Восстанавливаем абсолютное позиционирование */
+    bottom: 20px; /* Устанавливаем отступ в 10px от самого низа */
+    left: 46,5%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #000000; /* Яркий желтый */
+    text-shadow: none; /* Удаляем тень */
+    z-index: 100; /* Поверх всего */
+    animation: pulse 1.5s infinite alternate;
+    /* margin-top: 20px; */ /* Убираем */
+    /* position: relative; */ /* Убираем */
+}
+
+/* Удаляем стили для .trick-popup */
+/*
+.trick-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(102, 0, 0, 0.9);
+    border: 5px solid #ff0000;
+    padding: 40px;
+    box-shadow: 0 0 30px #ff0000, 0 0 50px #ff00ff;
+    text-align: center;
+    z-index: 1000;
+}
+
+.trick-popup h1 {
+    color: #ffff00;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #ff0000;
+}
+
+.trick-popup p {
+    color: #00ff00;
+    font-size: 1.5em;
+}
+*/
+
+.error-message {
+    display: none; /* Скрыт по умолчанию */
+    color: red; /* Красный текст ошибки */
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 1px 1px #000000; /* Черная тень для контраста */
+}
+
+.shake-animation {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.loading-modal {
+    display: none; /* Скрыт по умолчанию */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 51, 102, 0.9); /* Темно-синий полупрозрачный */
+    border: 5px solid #00ffff; /* Голубая рамка */
+    padding: 40px;
+    box-shadow: 0 0 30px #00ffff, 0 0 50px #0000ff; /* Синее свечение */
+    text-align: center;
+    z-index: 1000;
+}
+
+.loading-modal h1 {
+    color: #00ff00; /* Ядовито-зеленый */
+    font-size: 3em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px #ff00ff;
+}
+
+.loading-bar-container {
+    width: 300px;
+    height: 30px;
+    background-color: #330033; /* Темно-фиолетовый */
+    border: 2px solid #ff00ff; /* Фуксия */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.loading-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #ffff00; /* Яркий желтый */
+    animation: loadingProgress 3s forwards;
+}
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.popup {
+    display: none; /* Скрыт по умолчанию */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.9); /* Полупрозрачный красный */
+    border: 5px solid #00ff00; /* Ядовито-зеленая рамка */
+    padding: 40px;
+    box-shadow: 0 0 30px #ffff00, 0 0 50px #ff00ff; /* Сильное свечение */
+    text-align: center;
+    z-index: 1000;
+}
+
+.popup h1 {
+    color: #00ffff; /* Голубой */
+    font-size: 4em;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px #ff00ff;
+}
+
+.popup p {
+    color: #ffff00; /* Желтый */
+    font-size: 1.5em;
+}
+
+.popup button {
+    margin-top: 20px;
+    background-color: #00ffff; /* Голубой */
+    border: 3px solid #ffff00; /* Желтый */
+    color: #330033; /* Темно-фиолетовый */
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff00ff, 0 0 15px #00ffff;
+    transition: transform 0.2s ease-in-out;
+}
+
+.popup button:hover {
+    transform: scale(1.05);
+}

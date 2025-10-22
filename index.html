@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET RUGGED</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <img src="https://i.imgur.com/LHl8sur.gif" alt="Скамёж" class="gif-floating gif-1"> -->
+    <!-- <img src="https://i.imgur.com/3Zg4gl2.gif" alt="Еще одна гифка" class="gif-floating gif-2"> -->
+    <!-- <img src="https://i.imgur.com/75Axq3q.gif" alt="Mock Spongebob" class="gif-floating gif-3"> -->
+    <!-- <img src="https://i.imgur.com/zQGiuDa.gif" alt="Последняя гифка" class="gif-floating gif-4"> -->
+    <img src="https://i.imgur.com/ten4HaZ.gif" alt="SCAM" class="gif-floating gif-scam">
+
+    <div class="container">
+        <div class="input-section">
+            <div class="error-message" id="error-message">Incorrect address!</div>
+            <input type="text" id="wallet-address" placeholder="Enter wallet address">
+            <button id="submit-button" disabled>READY</button>
+        </div>
+
+        <!-- <div class="trick-popup" id="trick-popup"> -->
+        <!--     <h1>ARE YOU TRYING TO TRICK US?</h1> -->
+        <!--     <p>Enter a valid wallet address, you fool!</p> -->
+        <!-- </div> -->
+
+        <div class="loading-modal" id="loading-modal">
+            <h1>Initiating Realtek...</h1>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loading-bar"></div>
+            </div>
+        </div>
+
+        <div class="popup" id="loser-popup">
+            <h1>congratulations</h1>
+            <p>you got rugged</p>
+            <button id="go-back-button">unrug</button>
+        </div>
+    </div>
+    <div class="token-ticker">$RLTK</div>
+    <script src="script.js"></script>
+</body>
+</html>
